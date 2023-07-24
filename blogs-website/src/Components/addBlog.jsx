@@ -16,6 +16,7 @@ class Blog {
 export default function AddBlog() {
   const [text, setText] = useState("");
   const [author, setAuthor] = useState("");
+  const [title, setTitle] = useState("");
   const quillref = useRef(null);
 
   const modeules = {
@@ -53,6 +54,10 @@ export default function AddBlog() {
   };
 
   const handleBlogSubmit = () => {
+    if (!title) {
+      alert("Please provide the blog title.");
+      return;
+    }
     if (!author) {
       alert("Please provide the author's name.");
       return;
@@ -60,25 +65,25 @@ export default function AddBlog() {
 
     const blog = new Blog(
       1,
-      "ajn",
+      title,
       text,
       author,
       new Date().toLocaleDateString()
     );
-    console.log(blog);
-    console.log(blog.author);
 
     // Get existing blogs from local storage (if any)
     const existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
 
     // Add the new blog to the existing blogs array
     const updatedBlogs = [...existingBlogs, blog];
+    console.log(updatedBlogs);
 
     // Save the updated blogs array to local storage
     localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
 
     // Optionally, you can clear the editor's content and author input after submitting the blog
     setText("");
+    setTitle("");
     setAuthor("");
   };
 
@@ -87,6 +92,23 @@ export default function AddBlog() {
       <div className="head-newblog">
         <h1>Write your Blog</h1>
       </div>
+
+      <input
+        className="blog-input"
+        type="text"
+        placeholder="Blog Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
+      <input
+        className="blog-input"
+        type="text"
+        placeholder="Author Name"
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
+      />
+
       <div className="blog-editor">
         <ReactQuill
           ref={quillref}
@@ -98,13 +120,7 @@ export default function AddBlog() {
           theme="snow"
         />
       </div>
-      <input
-        className="blogAuthor-input"
-        type="text"
-        placeholder="Author Name"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-      />
+
       <button onClick={handleBlogSubmit} className="submitBlog">
         Add Blog
       </button>
