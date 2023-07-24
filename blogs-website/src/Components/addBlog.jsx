@@ -2,12 +2,20 @@ import { useState, useRef } from "react";
 import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import Blog from "./blog.js";
+
+class Blog {
+  constructor(id, title, content, author, date) {
+    this.id = id;
+    this.title = title;
+    this.content = content;
+    this.author = author;
+    this.date = date;
+  }
+}
 
 export default function AddBlog() {
-  const blogs = [];
-  const [blog, setblog] = useState(null);
   const [text, setText] = useState("");
+  const [author, setAuthor] = useState("");
   const quillref = useRef(null);
 
   const modeules = {
@@ -40,15 +48,38 @@ export default function AddBlog() {
     if (quillref.current) {
       const editor = quillref.current.getEditor();
       const htmlCode = editor.root.innerHTML;
-      console.log(htmlCode);
       setText(htmlCode);
     }
   };
 
   const handleBlogSubmit = () => {
-    const blog = Blog(1, "ajn", text, "hamza", "29");
+    if (!author) {
+      alert("Please provide the author's name.");
+      return;
+    }
+
+    const blog = new Blog(
+      1,
+      "ajn",
+      text,
+      author,
+      new Date().toLocaleDateString()
+    );
     console.log(blog);
     console.log(blog.author);
+
+    // Get existing blogs from local storage (if any)
+    const existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+
+    // Add the new blog to the existing blogs array
+    const updatedBlogs = [...existingBlogs, blog];
+
+    // Save the updated blogs array to local storage
+    localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
+
+    // Optionally, you can clear the editor's content and author input after submitting the blog
+    setText("");
+    setAuthor("");
   };
 
   return (
@@ -71,6 +102,8 @@ export default function AddBlog() {
         className="blogAuthor-input"
         type="text"
         placeholder="Author Name"
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
       />
       <button onClick={handleBlogSubmit} className="submitBlog">
         Add Blog
