@@ -74,3 +74,37 @@
     color: #000000;
     text-align: center;
 }
+
+.blog-list {
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blog-list h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blog-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-list li {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.blog-list li h3 {
+  margin-top: 0;
+}
+
+.blog-list li p {
+  margin: 5px 0;
+}
+
+.blog-list li div {
+  margin-top: 10px;
+}

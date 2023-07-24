@@ -16,7 +16,7 @@ export default function Home() {
         <Link to="/NewBlog">
           <button>Add Blog</button>
         </Link>
-        <Link>
+        <Link to="/Blogs">
           <button>View Blog</button>
         </Link>
       </div>
