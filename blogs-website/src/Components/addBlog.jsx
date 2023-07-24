@@ -1,8 +1,15 @@
+import { useState, useRef } from "react";
 import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import Blog from "./blog.js";
 
 export default function AddBlog() {
+  const blogs = [];
+  const [blog, setblog] = useState(null);
+  const [text, setText] = useState("");
+  const quillref = useRef(null);
+
   const modeules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -28,6 +35,22 @@ export default function AddBlog() {
     "image",
     "indent",
   ];
+
+  const handleBlog = () => {
+    if (quillref.current) {
+      const editor = quillref.current.getEditor();
+      const htmlCode = editor.root.innerHTML;
+      console.log(htmlCode);
+      setText(htmlCode);
+    }
+  };
+
+  const handleBlogSubmit = () => {
+    const blog = Blog(1, "ajn", text, "hamza", "29");
+    console.log(blog);
+    console.log(blog.author);
+  };
+
   return (
     <div className="addBlog">
       <div className="head-newblog">
@@ -35,13 +58,23 @@ export default function AddBlog() {
       </div>
       <div className="blog-editor">
         <ReactQuill
+          ref={quillref}
+          value={text}
+          onChange={handleBlog}
           className="blog-editor-ReactQuill"
           modules={modeules}
           formats={quillformats}
           theme="snow"
         />
       </div>
-      <button className="submitBlog">Add Blog</button>
+      <input
+        className="blogAuthor-input"
+        type="text"
+        placeholder="Author Name"
+      />
+      <button onClick={handleBlogSubmit} className="submitBlog">
+        Add Blog
+      </button>
     </div>
   );
 }

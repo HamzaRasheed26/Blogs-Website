@@ -48,14 +48,29 @@
     height: 90%;
 }
 
+
+.blogAuthor-input{
+    margin: 20px;
+    width: 70%;
+    height: 40px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+}
+
 .submitBlog{
+    width: 150px;
     margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #000000;
     background-color: #f5f5f5;
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
     color: #000000;
+    text-align: center;
 }
