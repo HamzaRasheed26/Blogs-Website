@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AddBlog from "./Components/addBlog";
 import Home from "./Components/home";
 import BlogList from "./Components/blogList";
+import ViewBlog from "./Components/viewBlog";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/NewBlog" component={AddBlog} />
         <Route exact path="/Blogs" component={BlogList} />
+        <Route exact path="/Blog/:id" component={ViewBlog} />
       </Switch>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function BlogList() {
   // Get the blogs from local storage (if any)
@@ -17,7 +18,9 @@ export default function BlogList() {
               <p>Author: {blog.author}</p>
               <p>Date: {blog.date}</p>
               {/* <div dangerouslySetInnerHTML={{ __html: blog.content }} /> */}
-              <button>Read Blog</button>
+              <Link to={`/blog/${blog.id}`}>
+                <button>Read Blog</button>
+              </Link>
             </li>
           ))}
         </ul>
