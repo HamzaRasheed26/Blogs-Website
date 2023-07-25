@@ -63,16 +63,16 @@ export default function AddBlog() {
       return;
     }
 
+    // Get existing blogs from local storage (if any)
+    const existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+
     const blog = new Blog(
-      1,
+      existingBlogs.length + 1,
       title,
       text,
       author,
       new Date().toLocaleDateString()
     );
-
-    // Get existing blogs from local storage (if any)
-    const existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
 
     // Add the new blog to the existing blogs array
     const updatedBlogs = [...existingBlogs, blog];

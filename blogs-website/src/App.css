@@ -76,12 +76,12 @@
 }
 
 .blog-list {
-  max-width: 70%;
+  max-width: 50%;
   margin: 0 auto;
   padding: 20px;
 }
 
-.blog-list h2 {
+.blog-list h1 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -93,18 +93,35 @@
 
 .blog-list li {
   border: 1px solid #ccc;
+  border-radius: 5px;
   margin-bottom: 10px;
-  padding: 10px;
+  text-align: center;
+  background-color: #f5f5f5;
 }
 
-.blog-list li h3 {
-  margin-top: 0;
+.blog-list li h2 {
+  padding: 10px;
+  margin-top: 0px;
+  background-color: #ccc;
 }
 
 .blog-list li p {
   margin: 5px 0;
+  font-style: italic;
 }
 
 .blog-list li div {
   margin-top: 10px;
+}
+
+.blog-list li button{
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #f5f5f5;
+  background-color: #ddd;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
 }
