@@ -93,7 +93,7 @@ export default function AddBlog() {
         <h1>Write your Blog</h1>
       </div>
 
-      <form action="http://localhost:4000/newBlog" method="post">
+      <form action="http://localhost:4000/newBlog" method="post" encType="multipart/form-data">
         <input
           className="blog-input"
           type="text"
