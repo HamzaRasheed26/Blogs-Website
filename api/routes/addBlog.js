@@ -19,7 +19,7 @@ router.post("/", upload.single("blogCoverImage"), (req, res, next) => {
   const coverImage = req.file.filename;
   const content = req.body.blogContent;
 
-  console.log(tilte, author, coverImage, content);
+  console.log(tilte, author, coverImage, content); 
 });
 
 module.exports = router;
