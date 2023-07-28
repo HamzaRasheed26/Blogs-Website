@@ -30,6 +30,12 @@
   align-items: center;
 }
 
+.addBlog form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .head-newblog h1{
     font-size: 40px;
     font-weight: bold;

@@ -93,37 +93,50 @@ export default function AddBlog() {
         <h1>Write your Blog</h1>
       </div>
 
-      <input
-        className="blog-input"
-        type="text"
-        placeholder="Blog Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-      <input
-        className="blog-input"
-        type="text"
-        placeholder="Author Name"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-      />
-
-      <div className="blog-editor">
-        <ReactQuill
-          ref={quillref}
-          value={text}
-          onChange={handleBlog}
-          className="blog-editor-ReactQuill"
-          modules={modeules}
-          formats={quillformats}
-          theme="snow"
+      <form action="http://localhost:4000/newBlog" method="post">
+        <input
+          className="blog-input"
+          type="text"
+          placeholder="Blog Title"
+          name="blogTitle"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
-      </div>
 
-      <button onClick={handleBlogSubmit} className="submitBlog">
-        Add Blog
-      </button>
+        <input
+          className="blog-input"
+          type="text"
+          placeholder="Author Name"
+          name="authorName"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
+
+        <label className="blog-input" for="fileInput" class="upload-label">
+          Upload Cover Image
+          <input
+            style={{ marginLeft: "5px" }}
+            type="file"
+            name="blogCoverImage"
+            id="blogCoverImage"
+          />
+        </label>
+
+        <div className="blog-editor">
+          <ReactQuill
+            ref={quillref}
+            value={text}
+            onChange={handleBlog}
+            className="blog-editor-ReactQuill"
+            modules={modeules}
+            formats={quillformats}
+            name="blogContent"
+            theme="snow"
+          />
+        </div>
+
+        <button className="submitBlog">Add Blog</button>
+      </form>
     </div>
   );
 }
