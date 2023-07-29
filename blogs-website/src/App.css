@@ -112,6 +112,13 @@
   background-color: #ccc;
 }
 
+.blog-list li img {
+  width: 80%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 10px;
+}
+
 .blog-list li p {
   margin: 5px 0;
   font-style: italic;

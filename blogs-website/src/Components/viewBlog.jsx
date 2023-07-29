@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function ViewBlog() {
   const { id } = useParams(); // Access the 'id' parameter from the URL
 
-  // Assuming you have the list of blogs fetched from local storage (similar to BlogDetails component)
-  const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  const [blogs, setBlogs] = useState([]);
+  const [blog, setBlog] = useState({});
 
-  // Find the selected blog by its id
-  const blog = blogs.find((blog) => blog.id === parseInt(id, 10));
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch("http://localhost:4000/Blogs");
+      const data = await response.json();
+      setBlogs(data);
 
-  // Check if the blog is found
-  if (!blog) {
+      // Find the selected blog by its id
+      const selectedBlog = data.find((blog) => blog.Id === parseInt(id, 10));
+
+      // Check if the blog is found
+      if (selectedBlog) {
+        setBlog(selectedBlog);
+      }
+    }
+
+    getData();
+  }, [id]);
+
+  // Check if the blog is not found
+  if (!blog.title) {
     return <div>Blog not found!</div>;
   }
 

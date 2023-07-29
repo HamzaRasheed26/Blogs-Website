@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function BlogList() {
-  // Get the blogs from local storage (if any)
-  const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch("http://localhost:4000/Blogs");
+      const data = await response.json();
+      setBlogs(data);
+    }
+
+    getData();
+  }, []);
 
   return (
     <div className="blog-list">
@@ -15,10 +23,14 @@ export default function BlogList() {
           {blogs.map((blog) => (
             <li key={blog.id}>
               <h2>{blog.title}</h2>
+              <img
+                src={`http://localhost:4000/images/${blog.coverImage}`}
+                alt="Cover Image..."
+              />
               <p>Author: {blog.author}</p>
               <p>Date: {blog.date}</p>
               {/* <div dangerouslySetInnerHTML={{ __html: blog.content }} /> */}
-              <Link to={`/blog/${blog.id}`}>
+              <Link to={`/blog/${blog.Id}`}>
                 <button>Read Blog</button>
               </Link>
             </li>
