@@ -93,7 +93,11 @@ export default function AddBlog() {
         <h1>Write your Blog</h1>
       </div>
 
-      <form action="http://localhost:4000/newBlog" method="post" encType="multipart/form-data">
+      <form
+        action={`http://localhost:4000/newBlog?text=${text}`}
+        method="post"
+        encType="multipart/form-data"
+      >
         <input
           className="blog-input"
           type="text"
@@ -101,6 +105,7 @@ export default function AddBlog() {
           name="blogTitle"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
 
         <input
@@ -110,15 +115,21 @@ export default function AddBlog() {
           name="authorName"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          required
         />
 
-        <label className="blog-input" for="fileInput" class="upload-label">
+        <label
+          className="blog-input"
+          for="fileInput"
+          style={{ textAlign: "center" }}
+        >
           Upload Cover Image
           <input
             style={{ marginLeft: "5px" }}
             type="file"
             name="blogCoverImage"
             id="blogCoverImage"
+            required
           />
         </label>
 
@@ -132,6 +143,7 @@ export default function AddBlog() {
             formats={quillformats}
             name="blogContent"
             theme="snow"
+            required
           />
         </div>
 
