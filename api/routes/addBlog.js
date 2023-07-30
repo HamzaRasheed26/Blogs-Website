@@ -33,7 +33,7 @@ router.post("/", upload.single("blogCoverImage"), (req, res, next) => {
     if (err) throw err;
     else {
       console.log("Data inserted successfully");
-      res.redirect("http://localhost:3000/");
+      res.redirect("https://hmzdev-blogswebsite.netlify.app/");
     }
   });
 });

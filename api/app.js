@@ -27,7 +27,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors()); // added by me
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://hmzdev-blogswebsite.netlify.app/"
+  );
   res.setHeader("Access-Control-Allow-Method", "GET,POST,PUT,DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
