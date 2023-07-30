@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const { connection } = require("../database/sql");
+const {connection} = require("../database/sql");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,8 +19,6 @@ router.post("/", upload.single("blogCoverImage"), (req, res, next) => {
   const author = req.body.authorName;
   const coverImage = req.file.filename;
   const content = req.query.text;
-
-  console.log(tilte, author, coverImage, content);
 
   const data = {
     title: tilte,

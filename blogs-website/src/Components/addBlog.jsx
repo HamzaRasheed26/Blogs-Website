@@ -53,40 +53,6 @@ export default function AddBlog() {
     }
   };
 
-  const handleBlogSubmit = () => {
-    if (!title) {
-      alert("Please provide the blog title.");
-      return;
-    }
-    if (!author) {
-      alert("Please provide the author's name.");
-      return;
-    }
-
-    // Get existing blogs from local storage (if any)
-    const existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-
-    const blog = new Blog(
-      existingBlogs.length + 1,
-      title,
-      text,
-      author,
-      new Date().toLocaleDateString()
-    );
-
-    // Add the new blog to the existing blogs array
-    const updatedBlogs = [...existingBlogs, blog];
-    console.log(updatedBlogs);
-
-    // Save the updated blogs array to local storage
-    localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
-
-    // Optionally, you can clear the editor's content and author input after submitting the blog
-    setText("");
-    setTitle("");
-    setAuthor("");
-  };
-
   return (
     <div className="addBlog">
       <div className="head-newblog">

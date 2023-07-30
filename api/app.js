@@ -10,6 +10,8 @@ var usersRouter = require("./routes/users");
 var newBlogRouter = require("./routes/addBlog"); // added by me
 var getBlogsRouter = require("./routes/getBlogs"); // added by me
 var database = require("./database/sql"); // added by me
+const { Console } = require("console");
+require("dotenv").config(); // added by me
 
 var app = express();
 
