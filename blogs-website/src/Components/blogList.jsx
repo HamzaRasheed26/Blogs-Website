@@ -5,7 +5,9 @@ export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     async function getData() {
-      const response = await fetch("http://localhost:4000/Blogs");
+      const response = await fetch(
+        "https://hmzdev-blogwebsite-api.glitch.me/Blogs"
+      );
       const data = await response.json();
       setBlogs(data);
     }
@@ -24,7 +26,7 @@ export default function BlogList() {
             <li key={blog.id}>
               <h2>{blog.title}</h2>
               <img
-                src={`http://localhost:4000/images/${blog.coverImage}`}
+                src={`https://hmzdev-blogwebsite-api.glitch.me/${blog.coverImage}`}
                 alt="Cover Image..."
               />
               <p>Author: {blog.author}</p>

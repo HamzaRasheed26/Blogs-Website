@@ -14,7 +14,7 @@ export default function Home() {
     >
       <div className="buttons-Blogs">
         <Link to="/NewBlog">
-          <button>Add Blog ..</button>
+          <button>Add Blog</button>
         </Link>
         <Link to="/Blogs">
           <button>View Blog</button>

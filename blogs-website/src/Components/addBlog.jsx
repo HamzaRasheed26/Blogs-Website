@@ -60,7 +60,7 @@ export default function AddBlog() {
       </div>
 
       <form
-        action={`http://localhost:4000/newBlog?text=${text}`}
+        action={`https://hmzdev-blogwebsite-api.glitch.me//newBlog?text=${text}`}
         method="post"
         encType="multipart/form-data"
       >

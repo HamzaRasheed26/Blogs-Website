@@ -8,7 +8,9 @@ export default function ViewBlog() {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch("http://localhost:4000/Blogs");
+      const response = await fetch(
+        "https://hmzdev-blogwebsite-api.glitch.me/Blogs"
+      );
       const data = await response.json();
 
       // Find the selected blog by its id
@@ -32,7 +34,7 @@ export default function ViewBlog() {
     <div className="blog-details">
       <div className="details">
         <img
-          src={`http://localhost:4000/images/${blog.coverImage}`}
+          src={`https://hmzdev-blogwebsite-api.glitch.me/${blog.coverImage}`}
           alt="Cover Image..."
         />
         <h1>{blog.title}</h1>
