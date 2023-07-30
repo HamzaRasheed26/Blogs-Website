@@ -26,7 +26,7 @@ export default function BlogList() {
             <li key={blog.id}>
               <h2>{blog.title}</h2>
               <img
-                src={`https://hmzdev-blogwebsite-api.glitch.me/${blog.coverImage}`}
+                src={`https://hmzdev-blogwebsite-api.glitch.me/images/${blog.coverImage}`}
                 alt="Cover Image..."
               />
               <p>Author: {blog.author}</p>
