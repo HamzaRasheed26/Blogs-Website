@@ -34,7 +34,7 @@ export default function ViewBlog() {
     <div className="blog-details">
       <div className="details">
         <img
-          src={`https://hmzdev-blogwebsite-api.glitch.me/${blog.coverImage}`}
+          src={`https://hmzdev-blogwebsite-api.glitch.me/images/${blog.coverImage}`}
           alt="Cover Image..."
         />
         <h1>{blog.title}</h1>
